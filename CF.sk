@@ -1,13 +1,10 @@
 options:
 	prefix: &6&lSk&e&lFeelings &8&l▏
-	broadcast: &f&lVapeMC &8&l▏
-
+	broadcast: &c&lFantasia &8&l▏
 	utf1: ❤
 	utf2: ▏
-
 	lines: &8&m------------------
-
-	permission: vapemc.feelings
+	permission: fantasia.feelings
 	perm: &cYou are not allowed to use this command !
 
 # 
@@ -24,9 +21,6 @@ command /feelings [<text>]:
 			send "{@prefix} &7Thank you for using &6&lSk&e&lFeelings"
 			send "{@prefix} &7Made by &c&liMPDevMC"
 			send "{@lines}"
-
-		if arg 1 is "Z" or "ZNetwork":
-			send "&0&lZ &8» &0&l...."
 
 		if arg 1 is "help":
 			send "soon"
@@ -118,8 +112,13 @@ command /cry [<text>]:
 	trigger:
 		broadcast "{@broadcast} &e%player% &7is &c&lheart broken"
 
-# WIP 
 command /stoopid [<offline player>]:
 	trigger:
 		if arg 1 is not set:
-			stop 
+			send "Hm, you need to tag someone to stoopid on"
+		if arg 1 is set:
+			if arg 1 is not online:
+				send "{@prefix} &7&oNope&8, &cthat player isn't online mate"
+		if arg 1 is set:
+			if arg 1 is online:
+				broadcast "{@broadcast} &7&l%sender% &7said that %arg 1% is &c&lSTOOOPID"
